@@ -204,12 +204,11 @@ body {
 
 /* ─── 3. Hero Section ─── */
 .hero {
-  padding: 120px 0 80px;
   position: relative;
   overflow: hidden;
-  min-height: 90vh;
+  min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
 }
 .hero-bg {
   position: absolute;
@@ -225,7 +224,7 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
-  opacity: 0.35;
+  opacity: 0.5;
 }
 .hero-bg::after {
   content: '';
@@ -235,19 +234,18 @@ body {
   width: 100%;
   height: 100%;
   background: linear-gradient(
-    to right,
-    rgba(25,14,13,0.92) 0%,
-    rgba(25,14,13,0.6) 50%,
+    to top,
+    rgba(25,14,13,1) 0%,
+    rgba(25,14,13,0.75) 35%,
+    rgba(25,14,13,0.15) 70%,
     rgba(25,14,13,0.3) 100%
   );
 }
 .hero-grid {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 32px;
-  display: grid;
-  grid-template-columns: 1fr;
-  align-items: center;
+  padding: 0 48px 80px;
+  width: 100%;
   position: relative;
   z-index: 1;
 }
@@ -271,17 +269,18 @@ body {
 .hero-title {
   font-family: 'NaN Jaune Mini', sans-serif;
   font-weight: 900;
-  font-size: clamp(44px, 5.5vw, 76px);
-  line-height: 0.92;
-  letter-spacing: -0.025em;
+  font-size: clamp(48px, 7vw, 96px);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
   margin-bottom: 24px;
+  max-width: 680px;
 }
 .hero-title .gold { color: var(--g); }
 .hero-sub {
   font-size: 16px;
-  opacity: 0.6;
-  margin-bottom: 36px;
-  max-width: 420px;
+  opacity: 0.55;
+  margin-bottom: 40px;
+  max-width: 460px;
   line-height: 1.7;
   font-weight: 400;
 }
@@ -389,10 +388,8 @@ body {
 }
 
 @media (max-width: 768px) {
-  .hero { padding: 60px 0 40px; min-height: auto; }
-  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-  .hero-photo img { height: 400px; }
-  .hero-float-stats { position: relative; bottom: auto; left: auto; right: auto; margin-top: 12px; }
+  .hero { min-height: 100svh; }
+  .hero-grid { padding: 0 24px 60px; }
 }
 
 /* ─── 4. Scroll Fuel Section ─── */
