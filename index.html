@@ -422,9 +422,9 @@ body {
   font-family: 'NaN Jaune Mini', sans-serif;
   font-weight: 900;
   font-size: clamp(48px, 13vw, 180px);
-  line-height: 0.85;
+  line-height: 1.1;
   color: var(--w);
-  opacity: 0.18;
+  opacity: 0.08;
   display: block;
   text-align: center;
   letter-spacing: -0.02em;
@@ -1602,7 +1602,7 @@ document.querySelectorAll('.rv').forEach(function(el) { revealObs.observe(el); }
     for (var i = 0; i < words.length; i++) {
       var wordStart = i * 0.15;
       var wordProgress = Math.max(0, Math.min(1, (progress - wordStart) / 0.3));
-      words[i].style.opacity = 0.18 + (wordProgress * 0.12);
+      words[i].style.opacity = 0.08 + (wordProgress * 0.92);
       words[i].style.transform = 'translateY(' + (20 - wordProgress * 20) + 'px)';
     }
 
