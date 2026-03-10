@@ -1615,7 +1615,7 @@ document.querySelectorAll('.rv').forEach(function(el) { revealObs.observe(el); }
     }
 
     /* Label fades in mid-scroll */
-    label.style.opacity = (progress > 0.65) ? '1' : '0';
+    label.style.opacity = (progress > 0.85) ? '1' : '0';
   }
 
   window.addEventListener('scroll', update, { passive: true });
