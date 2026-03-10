@@ -444,6 +444,7 @@ body {
   height: auto;
   display: block;
   mix-blend-mode: screen;
+
 }
 .sfuel-label {
   position: absolute;
@@ -1595,7 +1596,8 @@ document.querySelectorAll('.rv').forEach(function(el) { revealObs.observe(el); }
     var progress = Math.max(0, Math.min(1, -rect.top / total));
 
     /* Bars travel from translateY(100vh) to translateY(-10vh) */
-    var ty = 100 - (progress * 100);
+    var barProgress = Math.max(0, (progress - 0.4) / 0.6);
+    var ty = 100 - (barProgress * 100);
     bars.style.transform = 'translateX(-50%) translateY(' + ty + 'vh)';
 
     /* Words fade in staggered */
@@ -1603,6 +1605,7 @@ document.querySelectorAll('.rv').forEach(function(el) { revealObs.observe(el); }
       var wordStart = i * 0.15;
       var wordProgress = Math.max(0, Math.min(1, (progress - wordStart) / 0.3));
       words[i].style.opacity = 0.08 + (wordProgress * 0.92);
+      words[i].style.textShadow = ' 0 0 ' + (wordProgress * 40) + 'px rgba(255,255,255,' + (wordProgress * 0.3) + '), 0 0 ' + (wordProgress * 80) + 'px rgba(173,133,68,' + (wordProgress * 0.15) + ')';
       words[i].style.transform = 'translateY(' + (20 - wordProgress * 20) + 'px)';
     }
 
