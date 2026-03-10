@@ -1545,16 +1545,7 @@ body {
   </div>
 </footer>
 
-<!-- 17. Sticky Add-to-Cart Bar -->
-<div class="sticky-atc" id="sticky-atc">
-  <div class="sticky-atc-inner">
-    <div class="sticky-atc-info">
-      <span class="atc-name">Mocha Crisp Box</span>
-      <span class="atc-price">$54.00</span>
-    </div>
-    <button class="btn-gold" onclick="addToCart(this)">Add to Cart</button>
-  </div>
-</div>
+
 
 <script>
 /* Cart */
@@ -1632,18 +1623,7 @@ function toggleFaq(btn) {
   if (!wasOpen) item.classList.add('open');
 }
 
-/* Sticky ATC bar */
-(function() {
-  var hero = document.getElementById('hero');
-  var atc = document.getElementById('sticky-atc');
-  var obs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) atc.classList.remove('visible');
-      else atc.classList.add('visible');
-    });
-  }, { threshold: 0 });
-  obs.observe(hero);
-})();
+
 </script>
 </body>
 </html>
