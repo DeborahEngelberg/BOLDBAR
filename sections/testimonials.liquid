@@ -1,0 +1,42 @@
+<section class="testimonials">
+  <div class="test-header">
+    <h2 class="rv">{{ section.settings.heading }}</h2>
+  </div>
+  <div class="test-grid">
+    {% for block in section.blocks %}
+      <div class="test-card rv {% if forloop.index > 1 %}d{{ forloop.index | minus: 1 }}{% endif %}" {{ block.shopify_attributes }}>
+        <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>{{ block.settings.quote }}</p>
+        <div class="test-author">{{ block.settings.name }} <span>{{ block.settings.title }}</span></div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What People Are Saying" }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Quote" },
+        { "type": "text", "id": "name", "label": "Name" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Verified Preorder" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Testimonials",
+    "blocks": [
+      { "type": "testimonial", "settings": { "quote": "Finally a protein bar that actually tastes like real food. The mocha flavor with the caffeine kick is perfect for my morning commute.", "name": "Sarah M.", "title": "Verified Preorder" } },
+      { "type": "testimonial", "settings": { "quote": "I read every label and Bold Bar is the first bar I have found with ingredients I actually recognize. Honey sweetened, real coffee, real protein.", "name": "Jake R.", "title": "Verified Preorder" } },
+      { "type": "testimonial", "settings": { "quote": "Replaced my morning coffee and protein shake with one bar. 20g protein and 100mg caffeine in something that tastes this good is a game changer.", "name": "Priya K.", "title": "Verified Preorder" } }
+    ]
+  }]
+}
+{% endschema %}

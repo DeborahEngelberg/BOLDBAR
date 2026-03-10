@@ -1,0 +1,22 @@
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    {% for i in (1..18) %}
+      <span class="ticker-item">{{ section.settings.ticker_text }}</span>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Gold Ticker",
+  "settings": [
+    {
+      "type": "text",
+      "id": "ticker_text",
+      "label": "Repeating Text",
+      "default": "20G Protein · 100MG Caffeine · Honey Sweetened · Gluten Free · Kosher Certified · No Seed Oils ·"
+    }
+  ],
+  "presets": [{ "name": "Gold Ticker" }]
+}
+{% endschema %}

@@ -1,0 +1,86 @@
+<section class="shop" id="shop">
+  <div class="shop-header">
+    <h2 class="rv">{{ section.settings.heading }}</h2>
+    <p class="rv d1">{{ section.settings.subheading }}</p>
+  </div>
+  <div class="shop-grid">
+    {% for block in section.blocks %}
+      {% if block.type == 'featured_product' %}
+        <div class="product-card featured-card rv" {{ block.shopify_attributes }}>
+          <span class="badge">{{ block.settings.badge }}</span>
+          <div class="ingredient-overlay">
+            <div class="io-title">Ingredients</div>
+            <p>{{ block.settings.ingredients }}</p>
+          </div>
+          {% if block.settings.product %}
+            <img class="card-img" src="{{ block.settings.product.featured_image | image_url: width: 900 }}" alt="{{ block.settings.product.title }}" loading="lazy">
+          {% else %}
+            <img class="card-img" src="{{ block.settings.image_url }}" alt="{{ block.settings.title }}" loading="lazy">
+          {% endif %}
+          <div class="card-body">
+            <h3>{{ block.settings.title }}</h3>
+            <div class="card-price">{{ block.settings.price }} <small>/ box of 12</small></div>
+            <p class="card-sub">{{ block.settings.description }}</p>
+            {% if block.settings.product %}
+              <button class="btn-add" onclick="addToCartShopify('{{ block.settings.product.selected_or_first_available_variant.id }}', this)">Preorder Now</button>
+            {% else %}
+              <button class="btn-add" onclick="addToCart(this)">Preorder Now</button>
+            {% endif %}
+          </div>
+        </div>
+      {% elsif block.type == 'coming_soon' %}
+        <div class="product-card rv {% if forloop.index > 1 %}d{{ forloop.index | minus: 1 }}{% endif %}" {{ block.shopify_attributes }}>
+          <span class="badge soon">Coming Soon</span>
+          <img class="card-img" src="{{ block.settings.image_url }}" alt="{{ block.settings.title }}" loading="lazy">
+          <div class="card-body">
+            <h3>{{ block.settings.title }}</h3>
+            <p class="card-sub">{{ block.settings.description }}</p>
+            <button class="btn-add disabled" disabled>Coming Soon</button>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Shop",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Pick Your Flavor" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "3 flavors, hover a card to see ingredients" }
+  ],
+  "blocks": [
+    {
+      "type": "featured_product",
+      "name": "Featured Product",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Product" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Mocha Crisp" },
+        { "type": "text", "id": "price", "label": "Price", "default": "$54" },
+        { "type": "text", "id": "badge", "label": "Badge", "default": "Best Seller" },
+        { "type": "text", "id": "description", "label": "Description", "default": "$4.50/bar, 20g protein, 100mg caffeine" },
+        { "type": "textarea", "id": "ingredients", "label": "Ingredients" },
+        { "type": "url", "id": "image_url", "label": "Image URL (fallback)" }
+      ]
+    },
+    {
+      "type": "coming_soon",
+      "name": "Coming Soon Product",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "text", "id": "description", "label": "Description" },
+        { "type": "url", "id": "image_url", "label": "Image URL" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Shop",
+    "blocks": [
+      { "type": "featured_product", "settings": { "title": "Mocha Crisp", "price": "$54", "badge": "Best Seller", "description": "$4.50/bar, 20g protein, 100mg caffeine", "ingredients": "Almond Butter, Raw Unfiltered Honey, Whey Protein Concentrate, Milk Protein Isolate, Dairy Protein Crisps, Unsweetened Chocolate Chips, Cacao Butter, Date Syrup, Cocoa Powder, Coffee, Coffee Fruit Extract, Sea Salt", "image_url": "https://eatboldbar.com/cdn/shop/files/7_d3c5d667-cf90-4c26-93a1-ba948e54ac06.png?v=1761782558&width=900" } },
+      { "type": "coming_soon", "settings": { "title": "Chocolate Chip", "description": "Same clean formula, classic flavor", "image_url": "https://eatboldbar.com/cdn/shop/files/BOLD_STOPMOTION_10_2-2.png?v=1743974033&width=900" } },
+      { "type": "coming_soon", "settings": { "title": "Peanut Butter", "description": "Rich and satisfying, arriving Q3 2025", "image_url": "https://eatboldbar.com/cdn/shop/files/IGposts_1080x1350px_2.png?v=1762212195&width=900" } }
+    ]
+  }]
+}
+{% endschema %}

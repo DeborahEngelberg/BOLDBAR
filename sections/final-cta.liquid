@@ -1,0 +1,15 @@
+<section class="final-cta">
+  <h2>{{ section.settings.heading }}</h2>
+  <button class="btn-dark" onclick="addToCart(this)">{{ section.settings.button_text }}</button>
+</section>
+
+{% schema %}
+{
+  "name": "Final CTA",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Ready to Fuel Your Every Day?" },
+    { "type": "text", "id": "button_text", "label": "Button Text", "default": "Preorder Bold Bar" }
+  ],
+  "presets": [{ "name": "Final CTA" }]
+}
+{% endschema %}

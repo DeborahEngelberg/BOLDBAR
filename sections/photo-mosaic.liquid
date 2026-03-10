@@ -1,0 +1,39 @@
+<section class="mosaic">
+  <div class="mosaic-grid">
+    {% for block in section.blocks %}
+      <div class="m-item rv {% if forloop.index > 1 %}d{{ forloop.index | minus: 1 }}{% endif %}" {{ block.shopify_attributes }}>
+        {% if block.settings.image %}
+          <img src="{{ block.settings.image | image_url: width: 1200 }}" alt="{{ block.settings.image.alt }}" loading="lazy">
+        {% else %}
+          <img src="{{ block.settings.image_url }}" alt="Bold Bar" loading="lazy">
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Photo Mosaic",
+  "blocks": [
+    {
+      "type": "photo",
+      "name": "Photo",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "url", "id": "image_url", "label": "Image URL (fallback)" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Photo Mosaic",
+    "blocks": [
+      { "type": "photo", "settings": { "image_url": "https://eatboldbar.com/cdn/shop/files/2025_03_23_BOLD_01.jpg?v=1743649873&width=1200" } },
+      { "type": "photo", "settings": { "image_url": "https://eatboldbar.com/cdn/shop/files/2025_03_23_BOLD_02.jpg?v=1743649873&width=900" } },
+      { "type": "photo", "settings": { "image_url": "https://eatboldbar.com/cdn/shop/files/2025_03_23_BOLD_03.jpg?v=1743649873&width=900" } },
+      { "type": "photo", "settings": { "image_url": "https://eatboldbar.com/cdn/shop/files/2025_03_23_BOLD_05.jpg?v=1743726302&width=900" } },
+      { "type": "photo", "settings": { "image_url": "https://eatboldbar.com/cdn/shop/files/BOLD_STOPMOTION_10_2-2.png?v=1743974033&width=900" } }
+    ]
+  }]
+}
+{% endschema %}

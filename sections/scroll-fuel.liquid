@@ -1,0 +1,38 @@
+<section class="scroll-fuel">
+  <div class="sfuel-pin">
+    <div class="sfuel-bg">
+      <span class="sfuel-word">Fuel</span>
+      <span class="sfuel-word">Your</span>
+      <span class="sfuel-word">Every</span>
+      <span class="sfuel-word">Day</span>
+    </div>
+    <div class="sfuel-bars">
+      {% if section.settings.bars_image %}
+        <img src="{{ section.settings.bars_image | image_url: width: 1080 }}" style="mix-blend-mode:screen" alt="Bold Bar flavors">
+      {% else %}
+        <img src="{{ 'bars-product.png' | asset_url }}" style="mix-blend-mode:screen" alt="Bold Bar flavors">
+      {% endif %}
+    </div>
+    <p class="sfuel-label">{{ section.settings.label }}</p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Scroll Fuel",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bars_image",
+      "label": "3-Bar Product Image"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Bottom Label",
+      "default": "Three Flavors. One Standard."
+    }
+  ],
+  "presets": [{ "name": "Scroll Fuel" }]
+}
+{% endschema %}

@@ -1,0 +1,33 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Bold Bar",
+    "theme_version": "1.0.0",
+    "theme_author": "Bold Bar",
+    "theme_documentation_url": "https://eatboldbar.com",
+    "theme_support_url": "https://eatboldbar.com"
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_mocha",
+        "label": "Primary Background (Mocha)",
+        "default": "#190E0D"
+      },
+      {
+        "type": "color",
+        "id": "color_gold",
+        "label": "Gold Accent",
+        "default": "#AD8544"
+      },
+      {
+        "type": "color",
+        "id": "color_white",
+        "label": "Text Color",
+        "default": "#FFFFFF"
+      }
+    ]
+  }
+]

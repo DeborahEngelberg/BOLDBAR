@@ -1,0 +1,80 @@
+<section class="comparison" id="ingredients">
+  <div class="comparison-grid">
+    <div class="comparison-copy rv">
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.description }}</p>
+      <div class="ingredient-pills">
+        {% for block in section.blocks %}
+          {% if block.type == 'ingredient' %}
+            <span class="{% if block.settings.highlight %}highlight{% endif %}">{{ block.settings.name }}</span>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <button class="btn-gold" onclick="addToCart(this)">Preorder Now</button>
+    </div>
+    <div class="rv d1">
+      <table class="compare-table">
+        <thead>
+          <tr><th></th><th>Bold Bar</th><th>Typical Bar</th></tr>
+        </thead>
+        <tbody>
+          {% for block in section.blocks %}
+            {% if block.type == 'comparison_row' %}
+              <tr><td>{{ block.settings.label }}</td><td>{{ block.settings.bold_value }}</td><td>{{ block.settings.typical_value }}</td></tr>
+            {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Comparison",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Clean Ingredients, No Compromises" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "We use 12 real-food ingredients. No seed oils, no sugar alcohols, no artificial sweeteners. Every ingredient earns its place." }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient Pill",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name" },
+        { "type": "checkbox", "id": "highlight", "label": "Highlight Gold", "default": false }
+      ]
+    },
+    {
+      "type": "comparison_row",
+      "name": "Comparison Row",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label" },
+        { "type": "text", "id": "bold_value", "label": "Bold Bar Value" },
+        { "type": "text", "id": "typical_value", "label": "Typical Bar Value" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Comparison",
+    "blocks": [
+      { "type": "ingredient", "settings": { "name": "Almond Butter", "highlight": true } },
+      { "type": "ingredient", "settings": { "name": "Raw Honey", "highlight": true } },
+      { "type": "ingredient", "settings": { "name": "Whey Protein", "highlight": true } },
+      { "type": "ingredient", "settings": { "name": "Milk Protein Isolate", "highlight": false } },
+      { "type": "ingredient", "settings": { "name": "Dairy Protein Crisps", "highlight": false } },
+      { "type": "ingredient", "settings": { "name": "Chocolate Chips", "highlight": true } },
+      { "type": "ingredient", "settings": { "name": "Cacao Butter", "highlight": false } },
+      { "type": "ingredient", "settings": { "name": "Date Syrup", "highlight": true } },
+      { "type": "ingredient", "settings": { "name": "Cocoa Powder", "highlight": false } },
+      { "type": "ingredient", "settings": { "name": "Coffee", "highlight": true } },
+      { "type": "ingredient", "settings": { "name": "Coffee Fruit Extract", "highlight": false } },
+      { "type": "ingredient", "settings": { "name": "Sea Salt", "highlight": false } },
+      { "type": "comparison_row", "settings": { "label": "Protein", "bold_value": "20g", "typical_value": "10-15g" } },
+      { "type": "comparison_row", "settings": { "label": "Sweetener", "bold_value": "Raw Honey", "typical_value": "Sucralose/Stevia" } },
+      { "type": "comparison_row", "settings": { "label": "Caffeine", "bold_value": "100mg (Coffee)", "typical_value": "0mg" } },
+      { "type": "comparison_row", "settings": { "label": "Certifications", "bold_value": "Kosher, GF", "typical_value": "Varies" } }
+    ]
+  }]
+}
+{% endschema %}

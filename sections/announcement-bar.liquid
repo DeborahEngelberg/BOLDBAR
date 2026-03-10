@@ -1,0 +1,23 @@
+<div class="announce">
+  {{ section.settings.text }} <a href="#shop">{{ section.settings.link_text }}</a>
+</div>
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Announcement Text",
+      "default": "Free shipping on orders over $50 · Ships Q2 2025 ·"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link Text",
+      "default": "Preorder Now →"
+    }
+  ]
+}
+{% endschema %}

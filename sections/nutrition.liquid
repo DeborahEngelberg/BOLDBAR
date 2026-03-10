@@ -1,0 +1,50 @@
+<section class="nutrition">
+  <div class="nutrition-grid rv">
+    <div class="nutrition-img">
+      {% if section.settings.image %}
+        <img src="{{ section.settings.image | image_url: width: 800 }}" alt="Nutrition Facts" loading="lazy">
+      {% else %}
+        <img src="https://eatboldbar.com/cdn/shop/files/Mocha.png?v=1761785943" alt="Nutrition Facts" loading="lazy">
+      {% endif %}
+    </div>
+    <div class="nutrition-copy">
+      <h2>{{ section.settings.heading }}</h2>
+      <div class="macro-rows">
+        {% for block in section.blocks %}
+          <div class="macro-row"><span class="macro-name">{{ block.settings.label }}</span><span class="macro-val">{{ block.settings.value }}</span></div>
+        {% endfor %}
+      </div>
+      <button class="btn-gold" onclick="addToCart(this)">Preorder Now</button>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Nutrition",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Nutrition Label Image" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Nutrition Facts" }
+  ],
+  "blocks": [
+    {
+      "type": "macro",
+      "name": "Macro Row",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label" },
+        { "type": "text", "id": "value", "label": "Value" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Nutrition",
+    "blocks": [
+      { "type": "macro", "settings": { "label": "Calories", "value": "230" } },
+      { "type": "macro", "settings": { "label": "Protein", "value": "20g" } },
+      { "type": "macro", "settings": { "label": "Total Fat", "value": "12g" } },
+      { "type": "macro", "settings": { "label": "Total Carbs", "value": "18g" } },
+      { "type": "macro", "settings": { "label": "Caffeine", "value": "100mg" } }
+    ]
+  }]
+}
+{% endschema %}

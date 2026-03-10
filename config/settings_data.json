@@ -1,0 +1,40 @@
+{
+  "current": {
+    "color_mocha": "#190E0D",
+    "color_gold": "#AD8544",
+    "color_white": "#FFFFFF",
+    "sections": {
+      "announcement": { "type": "announcement-bar", "settings": {} },
+      "header": { "type": "header", "settings": {} },
+      "hero": { "type": "hero", "settings": {} },
+      "scroll-fuel": { "type": "scroll-fuel", "settings": {} },
+      "gold-ticker": { "type": "gold-ticker", "settings": {} },
+      "value-props": { "type": "value-props", "settings": {} },
+      "mosaic": { "type": "photo-mosaic", "settings": {} },
+      "shop": { "type": "shop", "settings": {} },
+      "dark-marquee": { "type": "dark-marquee", "settings": {} },
+      "bundle": { "type": "bundle", "settings": {} },
+      "comparison": { "type": "comparison", "settings": {} },
+      "testimonials": { "type": "testimonials", "settings": {} },
+      "nutrition": { "type": "nutrition", "settings": {} },
+      "faq": { "type": "faq", "settings": {} },
+      "final-cta": { "type": "final-cta", "settings": {} },
+      "footer": { "type": "footer", "settings": {} }
+    },
+    "content_for_index": [
+      "hero",
+      "scroll-fuel",
+      "gold-ticker",
+      "value-props",
+      "mosaic",
+      "shop",
+      "dark-marquee",
+      "bundle",
+      "comparison",
+      "testimonials",
+      "nutrition",
+      "faq",
+      "final-cta"
+    ]
+  }
+}

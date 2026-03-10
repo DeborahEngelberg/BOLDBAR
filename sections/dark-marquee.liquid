@@ -1,0 +1,22 @@
+<div class="dark-marquee">
+  <div class="ticker-track">
+    {% for i in (1..12) %}
+      <span class="ticker-item">{{ section.settings.ticker_text }}</span>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Dark Marquee",
+  "settings": [
+    {
+      "type": "text",
+      "id": "ticker_text",
+      "label": "Repeating Text",
+      "default": "Free Shipping Over $50 · Ships Q2 2025 · Kosher Certified · Gluten Free ·"
+    }
+  ],
+  "presets": [{ "name": "Dark Marquee" }]
+}
+{% endschema %}

@@ -1,0 +1,76 @@
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    {% if section.settings.bg_image %}
+      <img src="{{ section.settings.bg_image | image_url: width: 1920 }}" alt="{{ section.settings.bg_image.alt }}">
+    {% else %}
+      <img src="https://eatboldbar.com/cdn/shop/files/2025_03_23_BOLD_01.jpg?v=1743649873&width=1200" alt="Bold Bar">
+    {% endif %}
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid">
+    <div class="hero-left">
+      <p class="hero-eyebrow rv">{{ section.settings.eyebrow }}</p>
+      <h1 class="hero-title rv d1">{{ section.settings.headline }}</h1>
+      <p class="hero-sub rv d2">{{ section.settings.subheadline }}</p>
+      <div class="stat-row rv d3">
+        <span class="stat-pill">{{ section.settings.stat_1 }}</span>
+        <span class="stat-pill">{{ section.settings.stat_2 }}</span>
+        <span class="stat-pill">{{ section.settings.stat_3 }}</span>
+      </div>
+      <div class="hero-ctas rv d4">
+        <button class="btn-gold" onclick="addToCart(this)">Preorder Now</button>
+        <a href="#ingredients" class="btn-ghost">See Ingredients</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Performance Nutrition"
+    },
+    {
+      "type": "html",
+      "id": "headline",
+      "label": "Headline (use <span class='gold'> for gold text)",
+      "default": "Fuel Without<br><span class='gold'>Compromise</span>"
+    },
+    {
+      "type": "text",
+      "id": "subheadline",
+      "label": "Subheadline",
+      "default": "20g of complete protein, 100mg of natural caffeine, sweetened with raw honey. Nothing artificial, nothing unnecessary."
+    },
+    {
+      "type": "text",
+      "id": "stat_1",
+      "label": "Stat Pill 1",
+      "default": "20g Protein"
+    },
+    {
+      "type": "text",
+      "id": "stat_2",
+      "label": "Stat Pill 2",
+      "default": "100mg Caffeine"
+    },
+    {
+      "type": "text",
+      "id": "stat_3",
+      "label": "Stat Pill 3",
+      "default": "Honey Sweetened"
+    }
+  ],
+  "presets": [{ "name": "Hero" }]
+}
+{% endschema %}

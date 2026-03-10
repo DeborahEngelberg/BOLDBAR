@@ -1,0 +1,55 @@
+<section class="bundle">
+  <div class="bundle-grid rv">
+    <div class="bundle-img-wrap">
+      {% if section.settings.image %}
+        <img src="{{ section.settings.image | image_url: width: 900 }}" alt="Bold Bar bundle" loading="lazy">
+      {% else %}
+        <img src="https://eatboldbar.com/cdn/shop/files/2025_03_23_BOLD_02.jpg?v=1743649873&width=900" alt="Bold Bar bundle" loading="lazy">
+      {% endif %}
+      <div class="bundle-price-badge">{{ section.settings.price }}</div>
+    </div>
+    <div class="bundle-copy">
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.description }}</p>
+      <ul class="bundle-list">
+        {% for block in section.blocks %}
+          <li>{{ block.settings.item }} <span>{{ block.settings.value }}</span></li>
+        {% endfor %}
+      </ul>
+      <div class="bundle-total">{{ section.settings.total }}</div>
+      <button class="btn-gold" onclick="addToCart(this)">Preorder Now</button>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Bundle",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The Bold Box" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "12 bars of clean, functional nutrition. Enough to fuel your mornings for two weeks, or share with someone who still thinks protein bars need to taste like cardboard." },
+    { "type": "text", "id": "price", "label": "Price Badge", "default": "$54" },
+    { "type": "text", "id": "total", "label": "Total Price", "default": "$54.00" }
+  ],
+  "blocks": [
+    {
+      "type": "line_item",
+      "name": "Line Item",
+      "settings": [
+        { "type": "text", "id": "item", "label": "Item", "default": "12x Mocha Crisp Bars" },
+        { "type": "text", "id": "value", "label": "Value", "default": "$54.00" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Bundle",
+    "blocks": [
+      { "type": "line_item", "settings": { "item": "12x Mocha Crisp Bars", "value": "$54.00" } },
+      { "type": "line_item", "settings": { "item": "Free Shipping", "value": "$0.00" } },
+      { "type": "line_item", "settings": { "item": "OUD Kosher Certified", "value": "✓" } },
+      { "type": "line_item", "settings": { "item": "Gluten Free", "value": "✓" } }
+    ]
+  }]
+}
+{% endschema %}

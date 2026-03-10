@@ -1,0 +1,32 @@
+{
+  "sections": {
+    "hero": { "type": "hero" },
+    "scroll-fuel": { "type": "scroll-fuel" },
+    "gold-ticker": { "type": "gold-ticker" },
+    "value-props": { "type": "value-props" },
+    "mosaic": { "type": "photo-mosaic" },
+    "shop": { "type": "shop" },
+    "dark-marquee": { "type": "dark-marquee" },
+    "bundle": { "type": "bundle" },
+    "comparison": { "type": "comparison" },
+    "testimonials": { "type": "testimonials" },
+    "nutrition": { "type": "nutrition" },
+    "faq": { "type": "faq" },
+    "final-cta": { "type": "final-cta" }
+  },
+  "order": [
+    "hero",
+    "scroll-fuel",
+    "gold-ticker",
+    "value-props",
+    "mosaic",
+    "shop",
+    "dark-marquee",
+    "bundle",
+    "comparison",
+    "testimonials",
+    "nutrition",
+    "faq",
+    "final-cta"
+  ]
+}
