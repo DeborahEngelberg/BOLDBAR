@@ -1,0 +1,153 @@
+/* ============ BOLD — dark+gold aesthetic (from eatboldbar.com DNA) ============ */
+
+/* 'Ciron' and 'Jaune' family names are aliased to Neue Haas Grotesk so existing
+   component styles keep working unchanged. */
+@font-face {
+  font-family: 'Ciron';
+  src: url('fonts/NeueHaasDisplayBlack.ttf') format('truetype');
+  font-weight: 700; font-style: normal; font-display: block;
+}
+@font-face {
+  font-family: 'Ciron';
+  src: url('fonts/NeueHaasDisplayBlackItalic.ttf') format('truetype');
+  font-weight: 700; font-style: italic; font-display: block;
+}
+@font-face {
+  font-family: 'Jaune';
+  src: url('fonts/NeueHaasGrotText-75Bold-Trial.otf') format('opentype');
+  font-weight: 700; font-style: normal; font-display: block;
+}
+@font-face {
+  font-family: 'NeueHaas';
+  src: url('fonts/NeueHaasGrotText-55Roman-Trial.otf') format('opentype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'NeueHaas';
+  src: url('fonts/NeueHaasGrotText-75Bold-Trial.otf') format('opentype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+
+:root {
+  /* Base dark palette */
+  --m:        #190E0D;         /* page background */
+  --m1:       #231512;         /* card surface */
+  --m2:       #2a1a17;         /* raised card */
+  --w:        #f3ecdb;         /* cream text */
+  --g:        #AD8544;         /* gold accent */
+
+  /* Flavor-driven tokens (JS updates these) */
+  --paper:    var(--m);
+  --ink-text: var(--w);
+  --wrapper:  var(--m1);
+  --wrapper-2:var(--m2);
+  --accent:   var(--g);
+  --accent-2: #d4a558;
+
+  --font-display: 'Ciron', 'Arial Black', sans-serif;
+  --font-ui:      'Jaune', 'Helvetica Neue', sans-serif;
+  --font-body:    'NeueHaas', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+/* Silver silk/chrome background: the user's reference image. Legibility is
+   handled with a *very* subtle white tint only where dark text sits — the
+   silk pattern stays vivid elsewhere. Fixed attachment so the reflection
+   stays locked while content scrolls. */
+html, body {
+  background:
+    radial-gradient(ellipse 60% 80% at 50% 50%, rgba(250,248,244,0.18) 0%, rgba(250,248,244,0) 70%),
+    url('img/silver-bg.png');
+  background-size: auto, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+  background-attachment: fixed, fixed;
+  background-color: var(--paper);
+}
+/* No overflow clipping on ancestors of position:sticky. Each section that overflows handles it internally. */
+#root { background: transparent; color: var(--ink-text); min-height: 100vh; }
+body {
+  font-family: var(--font-body);
+  color: var(--ink-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: color .7s cubic-bezier(.7,0,.2,1);
+}
+
+button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+.display { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.02em; line-height: 0.82; text-transform: uppercase; }
+.jaune   { font-family: var(--font-ui); font-weight: 700; letter-spacing: -0.01em; text-transform: uppercase; }
+.eyebrow {
+  font-family: var(--font-ui); font-weight: 700;
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent);
+  display: inline-flex; align-items: center; gap: 12px;
+}
+.eyebrow::before { content:''; width: 28px; height: 1px; background: var(--accent); }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+::selection { background: var(--accent); color: var(--m); }
+
+/* Buttons */
+.btn-gold {
+  background: var(--accent); color: var(--m);
+  padding: 14px 30px; border-radius: 100px;
+  font-family: var(--font-ui); font-weight: 700;
+  font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+  transition: transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(173,133,68,0.28); }
+.btn-ghost {
+  background: transparent; color: var(--ink-text);
+  border: 1px solid rgba(255,255,255,0.14);
+  padding: 14px 30px; border-radius: 100px;
+  font-family: var(--font-ui); font-weight: 700;
+  font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+  transition: all .25s;
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Stat pill */
+.stat-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid rgba(173,133,68,0.3);
+  background: rgba(173,133,68,0.05);
+  color: var(--accent);
+  border-radius: 100px; padding: 8px 18px;
+  font-family: var(--font-ui); font-weight: 700;
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+}
+
+/* Reveal */
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
+.reveal.in { opacity: 1; transform: none; }
+.reveal.d1 { transition-delay: .1s; }
+.reveal.d2 { transition-delay: .2s; }
+.reveal.d3 { transition-delay: .3s; }
+
+/* Divider */
+.hair { height: 1px; background: rgba(255,255,255,0.06); }
+
+/* Ticker marquee */
+.ticker-wrap { overflow: hidden; padding: 13px 0; }
+.ticker-wrap.gold { background: var(--accent); }
+.ticker-wrap.dark { background: var(--m1); border-top: 1px solid rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.04); }
+.ticker-track { display: flex; width: max-content; animation: ticker-scroll 30s linear infinite; }
+.ticker-wrap:hover .ticker-track { animation-play-state: paused; }
+.ticker-item {
+  font-family: var(--font-ui); font-weight: 700;
+  font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+  white-space: nowrap; padding: 0 22px;
+}
+.ticker-wrap.gold .ticker-item { color: var(--m); }
+.ticker-wrap.dark .ticker-item { color: var(--accent); opacity: .75; }
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
